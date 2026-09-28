@@ -17,12 +17,12 @@
           "basic": [
             {
               "key": "username",
-              "value": "{{username}}",
+              "value": "Admin123",
               "type": "string"
             },
             {
               "key": "password",
-              "value": "{{password}}",
+              "value": "pw0rD!123456",
               "type": "string"
             }
           ]
