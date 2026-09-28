@@ -1,67 +1,39 @@
-# postman-test
+# Postman API Testing Assessment
 
-A repo for Postman collections and environment files
+This repository contains my Postman API testing implementation.
 
-## Repo Clone and Submission
+## Collection
 
-Please clone this repo (do NOT fork it), and push changes to your own account. Example of process steps linked [here](https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github).
+`postman-test`
 
-```
-- Follow good version control practices.
-- An initial commit after cloning the repo, before making any changes.
-- Any additional commits you want as you progress through the task.
-```
+### Requests covered
 
-Please push your work to your own github repo and share the link to the project with us, in good time, for review prior to interview. Please expect some questions/technical discussion during the interview, relating to your implementation of the given task.
+1. POST `/token`
+2. GET `/users`
+3. GET `/users/{userId}`
+4. POST `/users`
+5. PUT `/users`
+6. DELETE `/users/{userId}`
+7. POST `/users` - Bad Request
 
-## Project Requirements / Recommendations
+## Test coverage
 
-- GitHub Account
-- Postman Account
+The collection validates HTTP status codes, response structure and content, user IDs, submitted user data, and token generation.
 
-# Required task
+The token request stores the returned access token in the Postman environment so authenticated requests can reuse it through `{{token}}`.
 
-There is a mock API available, details:
+## Files
 
-URI : http://dev-unity-uks-test-mock-api.uksouth.azurecontainer.io:3000 with the endpoints:
-- POST /token
-- GET /users
-- GET /users/{userId}
-- POST /users
-- PUT /users
-- DELETE /users/{userId}
+- `postman-test.postman_collection.json` — Postman collection
+- `postman-test.postman_environment.json` — Postman environment
 
-POST\PUT users schema:
-```
-{
-	"type": "object",
-	"properties": {
-		"name": {
-			"type": "string",
-			"minLength": 1
-		},
-		"email": {
-			"type": "string",
-			"minLength": 1
-		},
-		"nickName": {
-			"type": "string",
-			"minLength": 0
-		}
-	},
-	"required": [
-		"name",
-		"email"
-	]
-}
-```
-Additional information:
-- The POST /token request uses Basic Auth
-	- Username: Admin123
-	- Password: pw0rD!123456
-- Other endpoints require Bearer token authentication.
-- There is no data layer, any changes made to entities are not retained.
+## Security
 
-Please create a Postman collection containing tests to cover each API and a supporting environment file. The tests must be runnable using the free version of Postman.
+No access token is stored in the repository. The environment token variable is intentionally blank and is populated dynamically by the `/token` request.
 
-Please submit your own code, NOT AI generated solutions to the problem.
+## How to run
+
+1. Import the collection and environment into Postman.
+2. Select the `postman-test` environment.
+3. Run `POST /token` first to generate and store the token.
+4. Run the remaining requests individually or through the Postman Collection Runner.
