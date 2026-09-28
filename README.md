@@ -62,6 +62,6 @@ Additional information:
 - Other endpoints require Bearer token authentication.
 - There is no data layer, any changes made to entities are not retained.
 
-Please create a Postman collection containing tests to cover each API and a supporting environment file.
+Please create a Postman collection containing tests to cover each API and a supporting environment file. The tests must be runnable using the free version of Postman.
 
 Please submit your own code, NOT AI generated solutions to the problem.
